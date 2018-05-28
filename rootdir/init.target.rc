@@ -24,16 +24,36 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-on post-fs-data
-    # Permissions for svc led
-    chown system system /sys/class/sec/led/led_r
-    chown system system /sys/class/sec/led/led_g
-    chown system system /sys/class/sec/led/led_b
-    chown system system /sys/class/sec/led/led_pattern
-    chown system system /sys/class/sec/led/led_blink
-    chown system system /sys/class/sec/led/led_lowpower
+on early-init
+    mount debugfs debugfs /sys/kernel/debug
+    mkdir /firmware 0771 system system
+    mkdir /firmware-modem 0771 system system
+    mkdir /efs 0771 system radio
+    symlink /data/tombstones /tombstones
 
-on boot
+on fs
+    mount_all fstab.qcom
+    swapon_all fstab.qcom
+
+    restorecon_recursive /persist
+
+    chown system radio /efs
+    chmod 0771 /efs
+    restorecon_recursive /efs
+
+    chown system radio /dev/block/platform/msm_sdcc.1/by-name
+    chmod 0775 /dev/block/platform/msm_sdcc.1/by-name
+
+    mkdir /persist/data 0700 system system
+    mkdir /persist/data/sfs 0700 system system
+    mkdir /persist/data/tz 0700 system system
+
+    write /sys/kernel/boot_adsp/boot 1
+
+    # Kickstart the Wireless subsystem
+    write /dev/wcnss_wlan 1
+
+on post-fs-data
     # NFC local data and nfcee xml storage
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
@@ -90,3 +110,256 @@ on boot
     chown system system /efs/gyro_cal_data
     chmod 0640 /efs/gyro_cal_data
     restorecon /efs/gyro_cal_data
+
+    # Permissions for svc led
+    chown system system /sys/class/sec/led/led_r
+    chown system system /sys/class/sec/led/led_g
+    chown system system /sys/class/sec/led/led_b
+    chown system system /sys/class/sec/led/led_pattern
+    chown system system /sys/class/sec/led/led_blink
+    chown system system /sys/class/sec/led/led_lowpower
+
+    # For WIFI TRP/TIS
+    chown system root /data/.psm.info
+    chmod 0664 /data/.psm.info
+
+    # For WIFI Antena Selection
+    chown system root /data/.ant.info
+    chmod 0664 /data/.ant.info
+
+    # For WIFI Version
+    write /data/.wifiver.info 0
+    chown system root /data/.wifiver.info
+    chmod 0664 /data/.wifiver.info
+
+    # For WIFI Cert
+    chmod 0664 /data/.bustxglom.info
+    chmod 0664 /data/.roamoff.info
+    chmod 0664 /data/.frameburst.info
+    chmod 0664 /data/.txbf.info
+
+    # For WIFI MAC address
+    mkdir /efs/wifi 0775 radio system
+    chown system wifi /efs/wifi/.mac.info
+    chmod 0660 /efs/wifi/.mac.info
+    #restorecon /efs/wifi/.mac.info
+    chmod 0660 /efs/wifi/.mac.cob
+
+    # Gpio DVS
+    chown radio system /sys/class/secgpio_check/secgpio_check_all/secgpio_ctrl
+
+    # DRM and related files in EFS
+    mkdir /efs/drm 0774 drm system
+    mkdir /efs/drm/sdrm 0774 drm system
+    mkdir /efs/drm/sdrm/data_agent 0774 drm system
+    #restorecon /efs/drm
+    #restorecon /efs/drm/sdrm
+    #restorecon /efs/drm/sdrm/data_agent
+
+    # DivX DRM
+    mkdir /efs/.files 0775
+    mkdir /efs/.files/.dx1 0775
+    mkdir /efs/.files/.dm33 0775
+    mkdir /efs/.files/.mp301 0775
+    chown media system /efs/.files/.dx1
+    chown media system /efs/.files/.dm33
+    chown media system /efs/.files/.mp301
+    chmod 0775 /efs/.files/.dx1
+    chmod 0775 /efs/.files/.dm33
+    chmod 0775 /efs/.files/.mp301
+
+    # DRK permission
+    mkdir /efs/prov 0770 radio system
+    chown radio system /efs/prov/libdevkm.lock
+    chmod 0660 /efs/prov/libdevkm.lock
+
+    # MUIC
+    chown system radio /sys/class/sec/switch/adc
+    chown system radio /sys/class/sec/switch/reset_switch
+    chown radio system /sys/class/sec/switch/usb_state
+
+    # Auto Brightness
+    chown system system /sys/class/backlight/panel/auto_brightness
+    chmod 0660 /sys/class/backlight/panel/auto_brightness
+
+    # LCD mdnie and panel work
+    chown system system /sys/class/mdnie/mdnie/negative
+    chown system media_rw /sys/class/mdnie/mdnie/accessibility
+
+    chown radio system /sys/class/lcd/panel/lcd_power
+    chown radio system /sys/class/lcd/panel/lcd_type
+    chown radio system /sys/class/lcd/panel/power_reduce
+    chown radio system /sys/class/lcd/panel/siop_enable
+
+    chown system system /sys/class/leds/keyboard-backlight/brightness
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/button-backlight/brightness
+
+    # Adjust YUV to RGB Conversion(CSC_Conversion)
+    chown system media_rw /sys/class/graphics/fb0/csc_cfg
+    chmod 0660 /sys/class/graphics/fb0/csc_cfg
+
+    # Display color calibration
+    chown system system /sys/devices/virtual/graphics/fb0/rgb
+    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
+
+    # Permissions for Camera
+    chown root system /sys/class/camera/rear/rear_camantibanding
+    chown system radio /sys/class/camera/rear/rear_camfw
+    chown system radio /sys/class/camera/rear/rear_camfw_full
+    chown system radio /sys/class/camera/rear/rear_camfw_load
+    chown system radio /sys/class/camera/rear/rear_camtype
+    chown system radio /sys/class/camera/rear/rear_corever
+    chown system radio /sys/class/camera/rear/rear_companionfw_full
+    chown system radio /sys/class/camera/rear/rear_calcheck
+    chown system radio /sys/class/camera/rear/rear_fwcheck
+    chown system radio /sys/class/camera/rear/isp_core
+    chown system radio /sys/class/camera/flash/rear_flash
+    chown system radio /sys/class/camera/front/front_camfw
+    chown system radio /sys/class/camera/front/front_camtype
+
+    # Torch
+    chown system system /sys/class/leds/led:flash_torch/brightness
+    chmod 0666 /sys/class/leds/led:flash_torch/brightness
+
+    # Permissions for SSRM
+    chmod 0664 /sys/devices/platform/sec-thermistor/temperature
+    chmod 0664 /sys/class/power_supply/battery/siop_level
+    chmod 0664 /sys/class/power_supply/battery/test_charge_current
+    chown radio system /sys/devices/platform/sec-thermistor/temperature
+    chown radio system /sys/class/power_supply/battery/siop_level
+    chown radio system /sys/class/power_supply/battery/test_charge_current
+
+    # Permissions for Charging
+    chown system radio /sys/class/power_supply/battery/batt_reset_soc
+    chown system radio /sys/class/power_supply/battery/update
+    chown system radio /sys/class/power_supply/battery/factory_mode
+    chown system radio /sys/class/power_supply/battery/batt_slate_mode
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/call
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/video
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/music
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/browser
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/hotspot
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/camera
+    chown system radio /sys/class/power_supply/battery/talk_wcdma
+    chown system radio /sys/class/power_supply/battery/talk_gsm
+    chown system radio /sys/class/power_supply/battery/call
+    chown system radio /sys/class/power_supply/battery/data_call
+    chown system radio /sys/class/power_supply/battery/gps
+    chown system radio /sys/class/power_supply/battery/wifi
+    chown system radio /sys/class/power_supply/battery/lte
+    chown system radio /sys/class/power_supply/battery/wc_enable
+    chown system radio /sys/class/power_supply/battery/lcd
+
+    # Permission for fast dormancy for RIL
+    chown system radio /sys/devices/virtual/sec/bamdmux/waketime
+
+    # Permissions for gpio_keys
+    chown system radio /sys/class/sec/sec_key/wakeup_keys
+    write /sys/class/sec/sec_key/wakeup_keys 116,172
+
+    # Permission for HALL IC
+    chown system radio /sys/class/sec/sec_key/hall_detect
+
+    # Vibetonz
+    chmod 0660 /dev/tspdrv
+    chown vibe vibe /dev/tspdrv
+
+    # Vibrator
+    chmod 0644 /sys/class/timed_output/vibrator/pwm_value
+    chown system system /sys/class/timed_output/vibrator/pwm_value
+    chown system system /sys/class/timed_output/vibrator/enable
+
+    # Permissions for TSP
+    chown system system /sys/class/sec/tsp/cmd
+    chown system system /sys/class/sec/tsp/input/enabled
+    chown system system /sys/class/input/input0/enabled
+    chown system system /sys/class/input/input1/enabled
+    chown system system /sys/class/input/input2/enabled
+    chmod 0664 /sys/class/sec/tsp/cmd
+    chmod 0660 /sys/class/sec/tsp/input/enabled
+    chmod 0664 /sys/class/input/input0/enabled
+    chmod 0664 /sys/class/input/input1/enabled
+    chmod 0664 /sys/class/input/input2/enabled
+
+    # Permission for touchkey
+    chown system system /sys/class/sec/sec_touchkey/keypad_enable
+    chown system system /sys/class/sec/sec_touchkey/touchkey_brightness
+    chown system system /sys/class/sec/sec_touchkey/touchkey_menu
+    chown system system /sys/class/sec/sec_touchkey/touchkey_back
+    chown system system /sys/class/sec/sec_touchkey/touch_version
+    chown system system /sys/class/sec/sec_touchkey/touchkey_firm_version_panel
+    chown system system /sys/class/sec/sec_touchkey/touchkey_firm_version_phone
+    chown system system /sys/class/sec/sec_touchkey/touchkey_firm_update_status
+    chown system system /sys/class/sec/sec_touchkey/touchkey_firm_update
+    chown system system /sys/class/sec/sec_touchkey/touch_sensitivity
+    chown system system /sys/class/sec/sec_touchkey/touchkey_threshold
+    chown system system /sys/devices/virtual/sec/sec_touchkey/brightness
+    chmod 0664 /sys/class/sec/sec_touchkey/keypad_enable
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_brightness
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_menu
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_back
+    chmod 0664 /sys/class/sec/sec_touchkey/touch_version
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_version_panel
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_version_phone
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_update_status
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_firm_update
+    chmod 0664 /sys/class/sec/sec_touchkey/touch_sensitivity
+    chmod 0664 /sys/class/sec/sec_touchkey/touchkey_threshold
+    chmod 0664 /sys/devices/virtual/sec/sec_touchkey/brightness
+    restorecon /sys/class/sec/sec_touchkey/keypad_enable
+
+    # ICD
+    exec check_icd
+    chown system system /dev/icd
+    chmod 0644 /dev/icd
+    chown system system /dev/icdr
+    chmod 0644 /dev/icdr
+    chown system system /dev/tzic
+
+on boot
+    # Start camera daemon
+    start qcamerasvr
+
+# Services
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+    class main
+    user root
+    group system
+
+# Start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+    class late_start
+    user camera
+    group camera system inet input graphics
+
+service thermal-engine /system/bin/thermal-engine -c /etc/thermal-engine-8226.conf
+    class core
+    seclabel u:r:thermal-engine:s0
+    user root
+    group root
+
+service time_daemon /system/bin/time_daemon
+    class late_start
+    user root
+    group root
+
+service wcnss-service /system/bin/wcnss_service
+    class late_start
+    user system
+    group system wifi
+    oneshot
+
+# Dual-sim support
+on property:persist.radio.multisim.config=dsds
+    stop ril-daemon
+    start ril-daemon
+    start ril-daemon1
+
+service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril-dsds.so -c 2
+    class main
+    socket rild2 stream 660 root radio
+    socket rild-debug2 stream 660 radio system
+    user root
+    disabled
+    group radio cache inet misc audio log qcom_diag system drmrpc sdcard_r sdcard_rw shell

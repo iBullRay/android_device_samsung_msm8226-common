@@ -18,6 +18,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# Memory
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
@@ -47,9 +50,9 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     tinymix
 
-PRODUCT_PACKAGES += \
-    libwvm_shim \
-    imx175_shim
+# Art
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-flags=--no-watch-dog
 
 # Bootanimation
 PRODUCT_COPY_FILES += \
@@ -63,6 +66,10 @@ PRODUCT_PACKAGES += \
     libstlport \
     libxml2 \
     Snap
+
+PRODUCT_PACKAGES += \
+    libwvm_shim \
+    imx175_shim
 
 # CRDA
 PRODUCT_PACKAGES += \
@@ -185,6 +192,10 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc
+
+# Storage
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=true
 
 # Thermal
 PRODUCT_COPY_FILES += \
