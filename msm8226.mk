@@ -71,6 +71,10 @@ PRODUCT_PACKAGES += \
     libwvm_shim \
     imx175_shim
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
+
 # CRDA
 PRODUCT_PACKAGES += \
     crda \
