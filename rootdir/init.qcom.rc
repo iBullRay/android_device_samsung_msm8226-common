@@ -327,6 +327,7 @@ service rmt_storage /system/bin/rmt_storage
     class core
     user root
     disabled
+    group system wakelock
 
 # WPA
 service p2p_supplicant /system/bin/wpa_supplicant \
