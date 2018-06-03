@@ -111,6 +111,9 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
 TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3gxx
 TARGET_KERNEL_CONFIG := aosp_s3ve3gxx_defconfig
 
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Memory
 MALLOC_SVELTE := true
 
