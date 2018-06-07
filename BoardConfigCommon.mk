@@ -23,6 +23,8 @@ TARGET_SPECIFIC_HEADER_PATH := $(VENDOR_PATH)/include
 # Architecture
 TARGET_CPU_MEMCPY_BASE_OPT_DISABLE := true
 TARGET_CPU_VARIANT := cortex-a7
+BOARD_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+BOARD_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # Audio
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
@@ -38,6 +40,8 @@ BLUETOOTH_HCI_USE_MCT := true
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8226
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
 
 # Build
 BLOCK_BASED_OTA := true
@@ -60,6 +64,9 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 BOARD_RIL_CLASS := ../../../$(VENDOR_PATH)/ril
 
 # Display
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_ION := true
+USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
@@ -98,18 +105,14 @@ TARGET_BOARD_PLATFORM := msm8226
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
 USE_CLANG_PLATFORM_BUILD := true
 
-# Init
-TARGET_INIT_VENDOR_LIB := libinit_msm
-
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37 androidboot.selinux=permissive androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
 TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3gxx
-TARGET_KERNEL_CONFIG := aosp_s3ve3gxx_defconfig
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -141,9 +144,6 @@ TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
 # Recovery
 TARGET_NO_RECOVERY := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
-
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # SELinux
 -include device/samsung/msm8226-common/sepolicy/sepolicy.mk
