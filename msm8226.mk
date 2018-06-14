@@ -1,4 +1,5 @@
-# Copyright (C) 2015 The Android Open-Source Project
+# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017, The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -53,10 +54,6 @@ PRODUCT_PACKAGES += \
 # Art
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-flags=--no-watch-dog
-
-# Bootanimation
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/bootanimation.zip:system/media/bootanimation.zip
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -122,10 +119,6 @@ PRODUCT_COPY_FILES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8226
-
-# Launcher
-PRODUCT_PACKAGES += \
-    Launcher3
 
 # Lights
 PRODUCT_PACKAGES += \

@@ -1,2 +1,0 @@
-genfscon exfat / u:object_r:exfat:s0
-genfscon ntfs / u:object_r:ntfs:s0

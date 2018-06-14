@@ -1,4 +1,5 @@
-# Copyright (C) 2015 The Android Open-Source Project
+# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017, The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -59,6 +60,9 @@ BOARD_CHARGING_CMDLINE_NAME := "androidboot.mode"
 BOARD_CHARGING_CMDLINE_VALUE := "charger"
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
+
+# CMHW
+BOARD_HARDWARE_CLASS += $(VENDOR_PATH)/cmhw
 
 # Custom RIL class
 BOARD_RIL_CLASS := ../../../$(VENDOR_PATH)/ril
@@ -147,7 +151,7 @@ TARGET_NO_RECOVERY := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 
 # SELinux
--include device/samsung/msm8226-common/sepolicy/sepolicy.mk
+-include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
 # Wifi
