@@ -143,6 +143,9 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
+# QCOM Hardware
+BOARD_USES_QCOM_HARDWARE := true
+
 # Radio
 SIM_COUNT := 2
 TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
