@@ -11,7 +11,7 @@ LOCAL_SRC_FILES := \
         QCameraStateMachine.cpp \
         QCameraChannel.cpp \
         QCameraStream.cpp \
-	QCameraPostProc.cpp \
+        QCameraPostProc.cpp \
         QCamera2HWICallbacks.cpp \
         QCameraParameters.cpp \
         QCameraThermalAdapter.cpp \
@@ -63,4 +63,3 @@ LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/test/Android.mk
-
