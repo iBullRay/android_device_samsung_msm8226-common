@@ -322,7 +322,7 @@ on boot
     start qcamerasvr
 
 # Services
-service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+service mpdecision /system/bin/mpdecision --avg_comp
     class main
     user root
     group system
