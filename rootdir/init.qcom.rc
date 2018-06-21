@@ -425,11 +425,3 @@ on property:persist.sys.ssr.restart_level=1
     write /sys/module/subsystem_restart/parameters/restart_level 1
 on property:persist.sys.ssr.restart_level=3
     write /sys/module/subsystem_restart/parameters/restart_level 3
-
-on property:sys.boot_completed=1
-    setprop sys.io.scheduler bfq
-
-    # Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/minfree "18432,23040,27648,32256,55296,80640"
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
