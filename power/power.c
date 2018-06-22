@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
+ * Copyright (C) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -258,7 +259,7 @@ struct power_module HAL_MODULE_INFO_SYM = {
         .module_api_version = POWER_MODULE_API_VERSION_0_2,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = POWER_HARDWARE_MODULE_ID,
-        .name = "msm8226 Power HAL",
+        .name = "MSM8226 Power HAL",
         .author = "The LineageOS Project",
         .methods = &power_module_methods,
     },

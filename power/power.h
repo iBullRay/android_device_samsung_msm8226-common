@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
+ * Copyright (C) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,7 +70,7 @@ static power_profile profiles[PROFILE_MAX] = {
         .above_hispeed_delay = 20000,
         .target_loads = 80,
         .target_loads_off = 90,
-        .scaling_max_freq = 159360000,
+        .scaling_max_freq = 140160000,
         .scaling_min_freq = 300000,
         .scaling_min_freq_off = 200000,
     },
@@ -87,7 +88,7 @@ static power_profile profiles[PROFILE_MAX] = {
         .above_hispeed_delay = 20000,
         .target_loads = 60,
         .target_loads_off = 70,
-        .scaling_max_freq = 159360000,
+        .scaling_max_freq = 140160000,
         .scaling_min_freq = 300000,
         .scaling_min_freq_off = 200000,
     },
@@ -103,7 +104,7 @@ static power_profile profiles[PROFILE_MAX] = {
         .above_hispeed_delay = 20000,
         .target_loads = 90,
         .target_loads_off = 90,
-        .scaling_max_freq = 1190400000,
+        .scaling_max_freq = 140160000,
         .scaling_min_freq = 300000,
         .scaling_min_freq_off = 200000,
     },
