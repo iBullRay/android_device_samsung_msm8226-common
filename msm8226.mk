@@ -66,8 +66,8 @@ PRODUCT_PACKAGES += \
     Snap
 
 PRODUCT_PACKAGES += \
-    libwvm_shim \
-    imx175_shim
+    libimx175_shim \
+    libwvm_shim
 
 PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.legacyencoder=true \
