@@ -6,6 +6,7 @@
 /sys/devices/virtual/camera(/.*)?                             u:object_r:sysfs_camera:s0
 
 # Charger
+/dev/keychord                                                 u:object_r:healthd:s0
 /sys/devices/.*bcl.*(/.*)?                                    u:object_r:sysfs_thermal:s0
 
 # CMHW

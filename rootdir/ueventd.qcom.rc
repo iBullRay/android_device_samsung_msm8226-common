@@ -200,5 +200,8 @@
 # Permission for dun
 /dev/dun                  0660   system     system
 
+# fastrpc permission setting
+/dev/adsprpc-smd          0664   system     system
+
 # Latin Mobile TV
 /dev/isdbt                0660   system     system

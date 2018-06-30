@@ -325,7 +325,7 @@ on boot
 service mpdecision /system/bin/mpdecision --avg_comp
     class main
     user root
-    group system
+    group root system readproc
 
 # Start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
@@ -345,9 +345,9 @@ service time_daemon /system/bin/time_daemon
     group root
 
 service wcnss-service /system/bin/wcnss_service
-    class late_start
+    class main
     user system
-    group system wifi
+    group system wifi radio
     oneshot
 
 # Dual-sim support
