@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2014, The CyanogenMod Project. All rights reserved.
+ * Copyright (C) 2013-2016, The CyanogenMod Project
+ * Copyright (C) 2017, The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +34,8 @@ import java.util.Collections;
 import com.android.internal.telephony.uicc.IccUtils;
 
 /**
- * Qualcomm RIL for Samsung MSM8226 Single-sim devices
+ * Qualcomm RIL for Samsung MSM8226 devices
+ *
  * {@hide}
  */
 public class SamsungMSM8226RIL extends RIL {
