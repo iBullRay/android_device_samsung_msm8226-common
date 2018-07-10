@@ -52,10 +52,6 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     tinymix
 
-# Art
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-flags=--no-watch-dog
-
 # Camera
 PRODUCT_PACKAGES += \
     camera.vendor.msm8226 \
@@ -68,10 +64,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libimx175_shim \
     libwvm_shim
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.legacyencoder=true \
-    media.stagefright.less-secure=true
 
 # CRDA
 PRODUCT_PACKAGES += \
@@ -171,10 +163,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.msm8226
 
-# QC Perf
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/system/lib/libqc-opt.so
-
 # Radio
 PRODUCT_PACKAGES += \
     libril_shim
@@ -191,10 +179,6 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc
-
-# Storage
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.sdcardfs=true
 
 # Thermal
 PRODUCT_COPY_FILES += \
