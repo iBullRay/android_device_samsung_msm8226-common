@@ -16,6 +16,8 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+LOCAL_PATH := device/samsung/msm8226-common
+
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -168,17 +170,21 @@ PRODUCT_PACKAGES += \
     libril_shim
 
 # Ramdisk
-PRODUCT_PACKAGES += \
-    init.qcom.bt.sh
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/init.qcom.power.rc:root/init.qcom.power.rc \
+    $(LOCAL_PATH)/rootdir/init.qcom.power.rc:root/init.recovery.qcom.rc \
+    $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
+    $(LOCAL_PATH)/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
+    $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
-PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.qcom.power.rc \
-    init.qcom.rc \
-    init.qcom.usb.rc \
-    init.recovery.qcom.rc \
-    init.target.rc \
-    ueventd.qcom.rc
+ifeq ($(WITH_TWRP),true)
+# Recovery Time Zone data
+PRODUCT_COPY_FILES += \
+    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
+endif
 
 # Thermal
 PRODUCT_COPY_FILES += \

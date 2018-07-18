@@ -127,3 +127,7 @@ on property:dev.bootcomplete=1
     # MPDecision
     rm /data/system/perfd/default_values
     start mpdecision
+
+on property:ro.twrp.boot=1
+    # Disable hardware keys when in TWRP recovery
+    write /sys/class/sec/sec_touchkey/touchkey_enable 0
