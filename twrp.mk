@@ -32,6 +32,3 @@ TW_TARGET_USES_QCOM_BSP := true
 TW_NO_LEGACY_PROPS := true
 TW_INCLUDE_NTFS_3G := true
 TW_EXCLUDE_SUPERSU := true
-
-# Encryption support
-TW_INCLUDE_CRYPTO := true
