@@ -16,10 +16,10 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-LOCAL_PATH := device/samsung/msm8226-common
+COMMON_PATH := device/samsung/msm8226-common
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
 # Memory
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
@@ -34,10 +34,10 @@ TARGET_SCREEN_WIDTH := 720
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    $(LOCAL_PATH)/configs/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(COMMON_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(COMMON_PATH)/configs/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -97,19 +97,19 @@ PRODUCT_PACKAGES += \
     libfmjni
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/flp.conf:system/etc/flp.conf \
-    $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf \
-    $(LOCAL_PATH)/gps/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    $(LOCAL_PATH)/gps/com.android.location.provider.xml:system/etc/permission/com.android.location.provider.xml \
-    $(LOCAL_PATH)/gps/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
+    $(COMMON_PATH)/gps/flp.conf:system/etc/flp.conf \
+    $(COMMON_PATH)/gps/gps.conf:system/etc/gps.conf \
+    $(COMMON_PATH)/gps/sap.conf:system/etc/sap.conf \
+    $(COMMON_PATH)/gps/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    $(COMMON_PATH)/gps/com.android.location.provider.xml:system/etc/permission/com.android.location.provider.xml \
+    $(COMMON_PATH)/gps/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/Button_Jack.kl:system/usr/keylayout/Button_Jack.kl \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-    $(LOCAL_PATH)/keylayout/synaptics_rmi4_i2c.kl:system/usr/keylayout/synaptics_rmi4_i2c.kl
+    $(COMMON_PATH)/keylayout/Button_Jack.kl:system/usr/keylayout/Button_Jack.kl \
+    $(COMMON_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(COMMON_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+    $(COMMON_PATH)/keylayout/synaptics_rmi4_i2c.kl:system/usr/keylayout/synaptics_rmi4_i2c.kl
 
 # Keystore
 PRODUCT_PACKAGES += \
@@ -124,10 +124,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml  \
-    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/configs/media_codecs_google_performance.xml:system/etc/media_codecs_google_performance.xml \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+    $(COMMON_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    $(COMMON_PATH)/configs/media_codecs_google_performance.xml:system/etc/media_codecs_google_performance.xml \
+    $(COMMON_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(COMMON_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -171,14 +171,14 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/init.qcom.power.rc:root/init.qcom.power.rc \
-    $(LOCAL_PATH)/rootdir/init.qcom.power.rc:root/init.recovery.qcom.rc \
-    $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
-    $(LOCAL_PATH)/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
-    $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
+    $(COMMON_PATH)/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    $(COMMON_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
+    $(COMMON_PATH)/rootdir/init.qcom.power.rc:root/init.qcom.power.rc \
+    $(COMMON_PATH)/rootdir/init.qcom.power.rc:root/init.recovery.qcom.rc \
+    $(COMMON_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
+    $(COMMON_PATH)/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
+    $(COMMON_PATH)/rootdir/init.target.rc:root/init.target.rc \
+    $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 ifeq ($(WITH_TWRP),true)
 # Recovery Time Zone data
@@ -188,7 +188,7 @@ endif
 
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
+    $(COMMON_PATH)/configs/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
 
 # Torch
 PRODUCT_PACKAGES += \
@@ -212,9 +212,9 @@ PRODUCT_PACKAGES += \
     wcnss_service
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+    $(COMMON_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(COMMON_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    $(COMMON_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 # Inherit from qcom-common
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)

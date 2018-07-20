@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := device/samsung/msm8226-common
+COMMON_PATH := device/samsung/msm8226-common
 
 # TWRP specific build flags
 RECOVERY_VARIANT := twrp
@@ -20,7 +20,7 @@ TW_THEME := portrait_hdpi
 BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/twrp.fstab
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/twrp.fstab
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
