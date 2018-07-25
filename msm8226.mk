@@ -177,7 +177,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/init.qcom.power.rc:root/init.recovery.qcom.rc \
     $(COMMON_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
     $(COMMON_PATH)/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
-    $(COMMON_PATH)/rootdir/init.target.rc:root/init.target.rc \
     $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 ifeq ($(WITH_TWRP),true)
