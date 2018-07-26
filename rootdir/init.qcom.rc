@@ -674,9 +674,9 @@ service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril-dsds.so -c 2
     group radio cache inet misc audio log qcom_diag system drmrpc sdcard_r sdcard_rw shell
 
 service wcnss-service /system/bin/wcnss_service
-    class main
+    class late_start
     user system
-    group system wifi radio
+    group system wifi
     oneshot
 
 # WPA
