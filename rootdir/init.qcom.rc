@@ -44,8 +44,6 @@ on init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
-    symlink /sdcard1 /mnt/sdcard1
-    symlink /sdcard1 /storage/sdcard1
 
 on fs
     mount_all fstab.qcom
@@ -66,6 +64,17 @@ on fs
 
     # Kickstart the Wireless subsystem
     write /dev/wcnss_wlan 1
+
+    write /sys/kernel/boot_adsp/boot 1
+
+    # Increase max readahead size to 512 KB
+    write /sys/block/mmcblk0/queue/read_ahead_kb 512
+    write /sys/block/mmcblk0/queue/scheduler noop
+
+on post-fs
+    # for controlling write performance boosting
+    chown system radio /sys/block/mmcblk0/bkops_en
+    chmod 0664 /sys/block/mmcblk0/bkops_en
 
 on post-fs-data
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
@@ -199,7 +208,6 @@ on early-boot
 
     # Allow subsystem (modem etc) debugging
     write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
-    write /sys/kernel/boot_adsp/boot 1
 
 on boot
     # Permissions for bluetooth
@@ -657,7 +665,11 @@ service rfs_access /system/bin/rfs_access
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
-    group system
+    group system wakelock
+
+on property:ro.boot.emmc=true
+    start rmt_storage
+    start rfs_access
 
 # Dual-sim support
 on property:persist.radio.multisim.config=dsds
