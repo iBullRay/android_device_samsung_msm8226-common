@@ -25,13 +25,13 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-service charger /sbin/healthd -c
+service charger /charger
     class charger
     seclabel u:r:healthd:s0
 
 on charger
     wait /dev/block/platform/msm_sdcc.1/by-name/system
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro
     class_start charger
     # Bring CPUs online
     write /sys/devices/system/cpu/cpu0/online 1
