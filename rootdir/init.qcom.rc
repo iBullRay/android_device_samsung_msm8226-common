@@ -646,6 +646,10 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics
 
+service charger /sbin/healthd -c
+    class charger
+    seclabel u:r:healthd:s0
+
 service thermal-engine /system/bin/thermal-engine -c /etc/thermal-engine-8226.conf
     class core
     seclabel u:r:thermal-engine:s0
