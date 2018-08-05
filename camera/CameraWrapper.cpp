@@ -452,7 +452,7 @@ static char *camera_get_parameters(struct camera_device *device)
     return params;
 }
 
-static void camera_put_parameters(struct camera_device *device,
+static void camera_put_parameters(__unused struct camera_device *device,
         char *params)
 {
     if (params)
