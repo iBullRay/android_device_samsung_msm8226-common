@@ -76,4 +76,33 @@
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
 
+    <!-- Control whether being in the desk dock should enable accelerometer
+    based screen orientation.  This defaults to true because it is
+    common for desk docks to be sold in a variety of form factors
+    with different orientations.  Since we cannot always tell these docks
+    apart and the docks cannot report their true orientation on their own,
+    we rely on gravity to determine the effective orientation. -->
+    <bool name="config_deskDockEnablesAccelerometer">false</bool>
+
+    <!-- Indicate whether closing the lid causes the device to go to sleep and opening
+    it causes the device to wake up.
+    The default is false. -->
+    <bool name="config_lidControlsSleep">true</bool>
+
+    <!-- Indicate whether the SD card is accessible without removing the battery. -->
+    <bool name="config_batterySdCardAccessibility">true</bool>
+
+    <!-- Maximum number of supported users -->
+    <integer name="config_multiuserMaximumUsers">4</integer>
+
+    <!-- Whether UI for multi user should be shown -->
+    <bool name="config_enableMultiUserUI">true</bool>
+
+    <!-- Set the system language as value of EF LI/EF PL -->
+    <bool name="config_use_sim_language_file">false</bool>
+
+    <!-- If true, the screen can be rotated via the accelerometer in all 4
+    rotations as the default behavior. -->
+    <bool name="config_allowAllRotations">true</bool>
+
 </resources>
