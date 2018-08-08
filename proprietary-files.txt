@@ -4,11 +4,7 @@ vendor/lib/libadsprpc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libscve.so
-vendor/lib/rfsa/adsp/libadsp_denoise_skel.so
 vendor/lib/rfsa/adsp/libadsp_fd_skel.so
-vendor/lib/rfsa/adsp/libdspCV_skel.so
-vendor/lib/rfsa/adsp/libfastcvadsp.so
-vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 
 # Audio
 etc/Bluetooth_cal.acdb
@@ -36,7 +32,7 @@ vendor/lib/libaptXScheduler.so
 
 # Camera
 bin/mm-qcamera-daemon
-lib/hw/camera.msm8226.so:lib/hw/camera.vendor.msm8226.so
+lib/hw/camera.vendor.msm8226.so
 lib/libarcsoft_flawlessface.so
 lib/libarcsoft_night_shot.so
 lib/libarcsoft_panorama_burstcapture.so
@@ -148,9 +144,10 @@ vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libWVStreamControlAPI_L3.so
 
 # GPS
+-app/com.qualcomm.location/com.qualcomm.location.apk
 lib/hw/flp.default.so
 lib/libloc_api_v02.so
 vendor/lib/libgeofence.so
@@ -191,6 +188,11 @@ vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
 vendor/lib/libSHIMDivxDrm.so
+vendor/lib/libOmxAacDec.so
+vendor/lib/libOmxAmrwbplusDec.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxQcelp13Dec.so
+vendor/lib/libOmxWmaDec.so
 
 # NFC
 vendor/firmware/libpn547_fw.so
