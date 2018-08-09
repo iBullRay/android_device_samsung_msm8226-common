@@ -123,6 +123,7 @@ public class SamsungMSM8226RIL extends RIL {
         }
         cardStatus.mApplications = new IccCardApplicationStatus[numApplications];
 
+        appStatus = new IccCardApplicationStatus();
         for (int i = 0 ; i < numApplications ; i++) {
             if (i != 0) {
                 appStatus = new IccCardApplicationStatus();
