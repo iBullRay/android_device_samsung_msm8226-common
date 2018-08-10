@@ -45,9 +45,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.primary.msm8226 \
     audio.r_submix.default \
-    audio.usb.default
-
-PRODUCT_PACKAGES += \
+    audio.usb.default \
     libaudio-resampler \
     libqcompostprocbundle \
     libqcomvisualizer \
@@ -56,16 +54,13 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.vendor.msm8226 \
     camera.msm8226 \
+    libimx175_shim \
+    libwvm_shim \
     libboringssl-compat \
     libstlport \
     libxml2 \
     Snap
-
-PRODUCT_PACKAGES += \
-    libimx175_shim \
-    libwvm_shim
 
 # CRDA
 PRODUCT_PACKAGES += \
@@ -96,6 +91,7 @@ PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
 
+# GPS
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/gps/flp.conf:system/etc/flp.conf \
     $(COMMON_PATH)/gps/gps.conf:system/etc/gps.conf \
@@ -131,7 +127,12 @@ PRODUCT_COPY_FILES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
+    libOmxAacEnc \
+    libOmxAmrEnc \
     libOmxCore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
