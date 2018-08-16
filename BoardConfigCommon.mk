@@ -53,7 +53,6 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # Faceproc needs this to load
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
-TARGET_USES_CPU_BOOST_HINT := true
 
 # Charger
 BOARD_CHARGING_CMDLINE_NAME := "androidboot.bootchg"
