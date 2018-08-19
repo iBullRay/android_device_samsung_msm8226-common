@@ -145,6 +145,7 @@ vendor/lib/libWVStreamControlAPI_L3.so
 
 # GPS
 -app/com.qualcomm.location/com.qualcomm.location.apk
+etc/permissions/com.qualcomm.location.xml
 lib/hw/flp.default.so
 lib/libloc_api_v02.so
 vendor/lib/libgeofence.so
