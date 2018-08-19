@@ -85,13 +85,11 @@ PRODUCT_PACKAGES += \
     libfmjni
 
 # GPS
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/gps/flp.conf:system/etc/flp.conf \
-    $(COMMON_PATH)/gps/gps.conf:system/etc/gps.conf \
-    $(COMMON_PATH)/gps/sap.conf:system/etc/sap.conf \
-    $(COMMON_PATH)/gps/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    $(COMMON_PATH)/gps/com.android.location.provider.xml:system/etc/permission/com.android.location.provider.xml \
-    $(COMMON_PATH)/gps/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
+PRODUCT_PACKAGES += \
+    gps.msm8226 \
+    flp.conf \
+    gps.conf \
+    sap.conf
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
