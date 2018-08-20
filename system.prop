@@ -7,7 +7,6 @@ media.aac_51_output_enabled=true
 mm.enable.smoothstreaming=true
 ro.qc.sdk.audio.fluencetype=none
 use.voice.path.for.pcm.voip=false
-audio.deep_buffer.media=true
 
 # Bluetooth
 qcom.bluetooth.soc=smd
