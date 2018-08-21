@@ -246,6 +246,9 @@
     -->
     <bool name="config_buttonLightOnKeypressOnly">true</bool>
 
+    <!-- Flag indicating if device supports EAP SIM, AKA, AKA' -->
+    <bool name="config_eap_sim_based_auth_supported">false</bool>
+
     <!-- Configuration to support SIM contact batch operation -->
     <bool name="config_sim_phonebook_batch_operation">false</bool>
 
