@@ -87,8 +87,10 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8226 \
+    clatd.conf \
     flp.conf \
     gps.conf \
+    izat.conf \
     sap.conf
 
 # Keylayouts
