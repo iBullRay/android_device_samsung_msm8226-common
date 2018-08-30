@@ -86,12 +86,14 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.msm8226 \
-    clatd.conf \
-    flp.conf \
-    gps.conf \
-    izat.conf \
-    sap.conf
+    gps.msm8226
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/gps/etc/clatd.conf:system/etc/clatd.conf \
+    $(COMMON_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
+    $(COMMON_PATH)/gps/etc/gps.conf:system/etc/gps.conf \
+    $(COMMON_PATH)/gps/etc/izat.conf:system/etc/izat.conf \
+    $(COMMON_PATH)/gps/etc/sap.conf:system/etc/sap.conf
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
