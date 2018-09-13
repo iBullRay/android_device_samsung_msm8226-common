@@ -49,7 +49,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm8226 \
     libimx175_shim \
-    libwvm_shim \
     libboringssl-compat \
     libstlport \
     libxml2 \
