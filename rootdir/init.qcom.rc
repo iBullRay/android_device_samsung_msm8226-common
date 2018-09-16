@@ -494,6 +494,10 @@ on boot
     chmod 0664 /sys/devices/virtual/sec/sec_touchkey/brightness
     restorecon /sys/class/sec/sec_touchkey/keypad_enable
 
+    # NFC_NCI
+    chown nfc nfc /dev/pn547
+    chmod 0660 /dev/pn547
+
     # NFC_NXP
     symlink /dev/pn547 /dev/pn544
     symlink /dev/pn547 /dev/pn54x
