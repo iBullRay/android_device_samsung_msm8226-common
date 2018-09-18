@@ -18,7 +18,6 @@
 # NFC
 /dev/pn547                                                    u:object_r:nfc_device:s0
 /dev/sec-nfc                                                  u:object_r:nfc_device:s0
-/sys/devices/platform/nfc-power/nfc_power                     u:object_r:sysfs_nfc_power_writable:s0
 
 # RIL
 /data/data/com.android.providers.telephony/databases(/.*)?    u:object_r:radio_data_file:s0
