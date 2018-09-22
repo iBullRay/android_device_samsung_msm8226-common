@@ -175,7 +175,7 @@
 
 # NFC permissions
 /dev/pn547                0660   nfc        nfc
-/dev/sec-nfc              0660   nfc        nfc
+/dev/pn544                0660   nfc        nfc
 /dev/nfc-nci              0660   nfc        nfc
 
 # UIO devices
