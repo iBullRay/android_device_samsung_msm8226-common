@@ -2,11 +2,12 @@
 dalvik.vm.dex2oat-swap=false
 dalvik.vm.dex2oat-flags=--no-watch-dog
 
-# Audio
+# Audio/Video
 audio.offload.disable=1
 audio.offload.video=false
 audio.offload.buffer.size.kb=32
 audio.offload.gapless.enabled=true
+audio.offload.multiple.enabled=false
 audio.offload.pcm.16bit.enable=false
 audio.offload.pcm.24bit.enable=false
 persist.audio.fluence.voicecall=true
